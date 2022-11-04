@@ -18,5 +18,5 @@ static struct PyModuleDef cipherModule = {
 
 PyMODINIT_FUNC PyInit_cipherTools() {
     printf("Cipher tools loaded!");
-    return 0;
+    return PyModule_Create(&cipherModule);
 };
