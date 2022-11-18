@@ -4,7 +4,7 @@ def main():
     setup(name="cipherTools",
           version="0.1",
           description="C++ based cipher tools module for Python",
-          ext_modules=[Extension("cipherTools", sources=["cipherTools.cpp"])])
+          ext_modules=[Extension("cipherTools", sources=["cipherTools.cpp", "caesar.cpp"])])
 
 if __name__ == "__main__":
     main()

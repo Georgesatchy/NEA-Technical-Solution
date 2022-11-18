@@ -1,6 +1,6 @@
 import cipherTools
 import pyglet
 
-print(cipherTools.caeser("hbsadvbifdas"))
+print(cipherTools.caesar("hbsadvbifdas"))
 
 input()

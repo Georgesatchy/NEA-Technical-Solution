@@ -1,23 +1,26 @@
 #include <Python.h>
-#include <stdio.h>
+#include <iostream>
 #include <string>
+#include "caesar.hpp"
 
 using namespace std;
 
-PyObject *caeser(PyObject *self, PyObject *args) {
-    printf("Running Caeser function\n");
-    const char* ciphertext;
+PyObject *caesar(PyObject *self, PyObject *args) {
+    cout << "Running Caesar function" << endl;
+    char* ciphertext;
     PyArg_ParseTuple(args, "s", &ciphertext);
+    string str(ciphertext);
     PyObject *result = PyList_New(26);
     for (int i=0; i<26; i++) {
-        PyObject* resultString = PyBytes_FromString(ciphertext);
+        Caesar c = Caesar(ciphertext, i);
+        PyObject* resultString = PyBytes_FromString(c.decrypt().c_str());
         PyList_SET_ITEM(result, i, resultString);
     }
     return result;
 };
 
 static PyMethodDef methods[] {
-    {"caeser", caeser, METH_VARARGS, "Returns all Caeser shifts of a given string"},  
+    {"caesar", caesar, METH_VARARGS, "Returns all Caesar shifts of a given string"},  
     {NULL, NULL, 0, NULL}
 };
 
@@ -30,6 +33,6 @@ static struct PyModuleDef cipherModule = {
 };
 
 PyMODINIT_FUNC PyInit_cipherTools(void) {
-    printf("Cipher tools loaded!\n");
+    cout << "Cipher tools loaded!" << endl;
     return PyModule_Create(&cipherModule);
 };
