@@ -5,13 +5,13 @@
 #include <iostream>
 
 class Caesar {
-    private:
-        char translate(char character);
     public:
         Caesar(std::string ciphertextInput, int shiftInput);
         std::string ciphertext;
         int shift;
         std::string decrypt();
+    private:
+        char translate(char character);
 };
 
 #endif
