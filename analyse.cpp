@@ -1,7 +1,7 @@
 #include "analyse.hpp"
 
-Analyse::Analyse(std::string textInput) {
-    text = textInput;
+Analyse::Analyse(Text text) {
+    text = text;
 }
 
 float Analyse::charFrequency() {
@@ -9,7 +9,7 @@ float Analyse::charFrequency() {
     float stringFrequencies[26] = {0.0f};
     float score = 0;
     int ascii;
-    for (auto ch: text) {
+    for (auto ch: text.alphabetic) {
         ascii = int(ch);
         if ((65 << ascii) && (ascii <= 90)) {
             stringFrequencies[ascii-65] += 1;

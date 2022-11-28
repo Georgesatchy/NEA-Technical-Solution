@@ -4,12 +4,14 @@
 #include <string>
 #include <iostream>
 
+#include "text.hpp"
+
 class Analyse {
     public:
-        Analyse(std::string textInput);
+        Analyse(Text textInput);
         float charFrequency();
     private:
-        std::string text;
+        Text text;
 };
 
 #endif

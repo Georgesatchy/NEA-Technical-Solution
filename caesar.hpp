@@ -4,12 +4,14 @@
 #include <string>
 #include <iostream>
 
+#include "text.hpp"
+
 class Caesar {
     public:
-        Caesar(std::string ciphertextInput, int shiftInput);
-        std::string ciphertext;
+        Caesar(Text ciphertext, int shiftInput);
+        Text text;
         int shift;
-        std::string decrypt();
+        Text decrypt();
     private:
         char translate(char character);
 };
