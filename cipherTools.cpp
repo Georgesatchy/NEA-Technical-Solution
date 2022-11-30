@@ -7,16 +7,13 @@
 #include "analyse.hpp"
 
 PyObject *caesar(PyObject *self, PyObject *args) {
-    std::cout << "Running Caesar function" << std::endl;
     char* ciphertext;
     PyArg_ParseTuple(args, "s", &ciphertext);
     std::string str(ciphertext);
     PyObject *result = PyList_New(26);
     Text toDecrypt = Text(ciphertext);
-    std::cout << toDecrypt.raw << std::endl;
     for (int i=0; i<26; i++) {
         Caesar c = Caesar(toDecrypt, i);
-        std::cout << "here" << std::endl;
         PyObject* resultString = PyUnicode_FromString(c.decrypt().raw.c_str());
         PyList_SET_ITEM(result, i, resultString);
     }
@@ -24,13 +21,9 @@ PyObject *caesar(PyObject *self, PyObject *args) {
 };
 
 PyObject *charFrequency(PyObject *self, PyObject *args) {
-    std::cout << "Running character frequency analysis function" << std::endl;
-    char* text;
-    PyArg_ParseTuple(args, "s", &text);
-    std::string str(text);
-    Analyse a = Analyse(Text(text));
-    float score = a.charFrequency();
-    std::cout << score << std::endl;
+    char* textInput;
+    PyArg_ParseTuple(args, "s", &textInput);
+    float score = charFrequency(textInput);
     return PyLong_FromDouble(score);
 };
 

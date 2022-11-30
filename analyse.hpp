@@ -6,12 +6,6 @@
 
 #include "text.hpp"
 
-class Analyse {
-    public:
-        Analyse(Text textInput);
-        float charFrequency();
-    private:
-        Text text;
-};
+float charFrequency(std::string text);
 
 #endif
