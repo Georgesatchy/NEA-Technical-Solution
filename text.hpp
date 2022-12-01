@@ -2,7 +2,6 @@
 #define __TEXT__
 
 #include <string>
-#include <iostream>
 
 class Text {
     public:

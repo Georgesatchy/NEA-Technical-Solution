@@ -2,10 +2,9 @@
 #define __ANALYSE__
 
 #include <string>
-#include <iostream>
 
-#include "text.hpp"
-
-float charFrequency(std::string text);
+namespace analyse {
+    float charFrequency(std::string text);
+}
 
 #endif

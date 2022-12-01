@@ -1,11 +1,6 @@
 #include "caesar.hpp"
 
-Caesar::Caesar(Text ciphertext, int shiftInput) {
-    text = ciphertext;
-    shift = shiftInput;
-}
-
-char Caesar::translate(char character) {
+char translate(char character, int shift) {
     int ascii = int(character);
     if ((65 <= ascii) && (ascii <= 90)) {
         ascii = (ascii + shift - 65)%26 + 65;
@@ -18,10 +13,10 @@ char Caesar::translate(char character) {
     }
 }
 
-Text Caesar::decrypt() {
+std::string caesar::decrypt(std::string text, int shift) {
     std::string resultString = "";
-    for (int i = 0; i < text.raw.length(); i++) {
-        resultString += translate(text.raw[i]);
+    for (int i = 0; i < text.length(); i++) {
+        resultString += translate(text[i], shift);
     }
-    return Text(resultString);
-}
+    return resultString;
+}   
