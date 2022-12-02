@@ -1,5 +1,12 @@
 #include "text.hpp"
 
+/*
+This text class allows a string to be formatted such that it can easily be decrypted and displayed
+
+This includes storing the raw inputting string, removing non alphabetic 
+characters and converting it to upper case text.
+*/
+
 Text::Text(std::string textInput) {
     raw = textInput;
     alphabetic = removeIrregular();
