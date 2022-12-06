@@ -2,8 +2,11 @@
 #define __CAESAR__
 
 #include <string>
+#include <iostream>
 
 #include "../text.hpp"
+#include "substitution.hpp"
+#include "../analyse.hpp"
 
 /* 
 Define a "caesar" namespace so the Caesar-based function can be called in the main cipherTools 
