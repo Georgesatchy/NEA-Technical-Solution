@@ -5,6 +5,7 @@
 #include "text.hpp"
 #include "ciphers/caesar.hpp"
 #include "analyse.hpp"
+#include "utils/matrix.hpp"
 
 PyObject *decryptCaesar(PyObject *self, PyObject *args) {
     char* ciphertext;
@@ -26,9 +27,19 @@ PyObject *analyseCharFrequency(PyObject *self, PyObject *args) {
     return PyLong_FromDouble(score);
 };
 
+PyObject *test(PyObject *self, PyObject *args) {
+    std::cout << "a" << std::endl;
+    Matrix_2x2 matrix = Matrix_2x2::Matrix_2x2(4, 1, 1, 3);
+    std::cout << "e" << std::endl;
+    int modDet = matrix.inverseDeterminant();
+    std::cout << modDet << std::endl;
+    return PyLong_FromDouble(modDet);
+}
+
 static PyMethodDef methods[] {
     {"caesar", decryptCaesar, METH_VARARGS, "Returns all Caesar shifts of a given string"},  
     {"char_frequency", analyseCharFrequency, METH_VARARGS, "Returns character frequency score for a given string"},  
+    {"test", test, METH_VARARGS, "Function for testing"},  
     {NULL, NULL, 0, NULL}
 };
 

@@ -4,7 +4,7 @@
 const char * alphabet {"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
 char shiftedAlphabet[26];
 
-struct score {
+struct decryption {
     float score;
     std::string text;
 };
@@ -24,15 +24,16 @@ namespace caesar {
     }   
 
     std::string bestSolution(std::string text) { // Unfinished function; designed to use cryptanalysis to directly return the best caesar shift result
-        score scores[26] = {};
+        decryption decryptions[26] = {};
+        std::string decryptText;
         for (int i = 0; i < 26; i++) {
-            scores[i].text = decrypt(text, i);
-            scores[i].score = analyse::charFrequency(scores[i][1]);
+            decryptions[i].text = decrypt(text, i);
+            decryptions[i].score = analyse::charFrequency(decryptions[i].text);
         }
-        score bestScore = scores[0];
+        decryption bestDecryption = decryptions[0];
         for (int i = 1; i < 26; i++) {
-            if (scores[i].score < bestScore.score) {
-                bestScore = scores[i];
+            if (decryptions[i].score < bestDecryption.score) {
+                bestDecryption = decryptions[i];
             }
         }
     }
