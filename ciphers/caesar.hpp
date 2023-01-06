@@ -16,7 +16,7 @@ file using caesar::FUNCTION() to avoid function name clashes with other cipher-t
 namespace caesar { 
     // This allows the functions to be imported into the main cipherTools.cpp file
     std::string decrypt(std::string ciphertext, int shiftInput);
-    std::string bestSolution(std::string ciphertext);
+    decryption bestSolution(std::string ciphertext);
 }
 
 #endif

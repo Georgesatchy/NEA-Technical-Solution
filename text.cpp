@@ -7,29 +7,32 @@ This includes storing the raw inputting string, removing non alphabetic
 characters and converting it to upper case text.
 */
 
-Text::Text(std::string textInput) {
-    raw = textInput;
-    alphabetic = removeIrregular();
-    caps = toUpper();
+std::string format(std::string raw) {
+    std::string result;
+    result = Text::removeIrregular(raw);
+    result = Text::toUpper(result);
+    return result;
 }
 
-std::string Text::removeIrregular() {
-    std::string alph = "";
-    for (char& c: raw) {
-        int ascii = int(c);
-        if ((65 <= ascii) && (ascii <= 90)) {
-            alph += c;
-        } else if ((97 <= ascii) && (122 <= ascii)) {
-            alph += c;
+namespace Text {
+    std::string removeIrregular(std::string raw) {
+        std::string alph = "";
+        for (char& c: raw) {
+            int ascii = int(c);
+            if ((65 <= ascii) && (ascii <= 90)) {
+                alph += c;
+            } else if ((97 <= ascii) && (ascii <= 122)) {
+                alph += c;
+            }
         }
+        return alph;
     }
-    return alph;
-}
 
-std::string Text::toUpper() {
-    std::string upper = "";
-    for (char& c: alphabetic) {
-        upper += toupper(c);
+    std::string toUpper(std::string alphabetic) {
+        std::string upper = "";
+        for (char& c: alphabetic) {
+            upper += toupper(c);
+        }
+        return upper;
     }
-    return upper;
 }
